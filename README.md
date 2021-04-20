@@ -1,8 +1,8 @@
 # GetMail
 利用NTLM Hash读取Exchange邮件：在进行内网渗透时候，我们经常拿到的是账号的Hash凭据而不是明文口令。在这种情况下采用邮件客户端或者WEBMAIL的方式读取邮件就很麻烦，需要进行破解，NTLM的破解主要依靠字典强度，破解概率并不是很大。其实Exchange提供了利用NTLM Hash凭据进行验证的方法，从而可以进行任何操作。本程序支持邮箱目录结构的列举、邮件的阅读、附件的下载、关键字的搜索等功能，支持明文密码和NTLM Hash凭证两种认证方式。
 ## 参数介绍
--h, --help                     show this help message and exit
--u USER, --user=USER           Please Input Username: Domain\DomainUserName!
++  -h, --help                     show this help message and exit
++  -u USER, --user=USER           Please Input Username: Domain\DomainUserName!
 -H HASH, --hash=HASH           Please Input Ntlmhash: xx:xx Or xxxx!
 -p PSWD, --pswd=PSWD           Please Input Password!
 -e EMAIL, --email=EMAIL        Please Input Email Address!
