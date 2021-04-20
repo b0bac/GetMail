@@ -118,7 +118,8 @@ def DisplayEmail(emails, keyword=None):
         print("***************************************************************")
         print("发件人: %s"%str(item.sender.email_address))
         print("主题: %s"%str(item.subject))
-        print("邮件内容: %s"%str(item.text_body))
+        print("时间: %s"%str(item.datetime_received))
+        print("邮件内容:\n%s"%str(item.text_body))
         for attachment in item.attachments:
             if isinstance(attachment, FileAttachment):
                 print("附件文件: %s"%str(attachment.name))
