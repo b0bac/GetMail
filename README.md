@@ -31,4 +31,4 @@ python3 getmail.py -u [USERNAME] -p [PASSWORD] -e [EMAIL ADDRESS] -f [文件夹�
 python3 getmail.py -u [USERNAME] -p [PASSWORD] -e [EMAIL ADDRESS] -f [文件夹，默认是Inbox] -c 阅读邮件数量（按照时间倒序，最近的在最前面）——D
 ```
 ## ISSUE
-+ 0x01 默认Inbox收件箱邮件阅读超过20封时候有会问题，修改中...
++ 0x01 默认Inbox收件箱邮件阅读超过20封时候有会问题【已修复】
