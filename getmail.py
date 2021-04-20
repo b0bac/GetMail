@@ -91,9 +91,13 @@ def GetEmail(floder, count):
 def GetEmailByPage(floder, size, page):
     start = 0
     pages = []
+    total = 0
+    if floder.name == "收件箱":
+        total = floder.total_count
+    else:
+        total = floder.folders[0].total_count
     for index in range(page):
-        #print(dir(floder))
-        if start + size < floder.folders[0].total_count:
+        if start + size < total:
             pages.append(floder.all().order_by("-datetime_received")[start:start+size])
             start += size
         else:
