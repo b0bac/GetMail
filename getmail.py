@@ -130,7 +130,7 @@ def DisplayEmail(emails, keyword=None):
 
 if __name__ == "__main__":
     parser = OptionParser()
-    parser.add_option("-u", "--user", dest="user", help="Please Input Username: Domain\\DomainUserName!")
+    parser.add_option("-u", "--user", dest="user", help="Please Input Username!")
     parser.add_option("-H", "--hash", dest="hash", help="Please Input Ntlmhash: xx:xx Or xxxx!")
     parser.add_option("-p", "--pswd", dest="pswd", help="Please Input Password!")
     parser.add_option("-e", "--email", dest="email", help="Please Input Email Address!")
