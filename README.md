@@ -3,17 +3,17 @@
 ## 参数介绍
 +  -h, --help                     show this help message and exit
 +  -u USER, --user=USER           Please Input Username: Domain\DomainUserName!
--H HASH, --hash=HASH           Please Input Ntlmhash: xx:xx Or xxxx!
--p PSWD, --pswd=PSWD           Please Input Password!
--e EMAIL, --email=EMAIL        Please Input Email Address!
--c COUNT, --count=COUNT        Please Input How Many Emails You Want To Read!
--s SERVER, --server=SERVER     Please Input Email Server Address!
--k KEYWORD, --keyword=KEYWORD  Please Input Keyword To Search!
--L, --List                     List All Email Floders!
--D, --download                 Whether Download Attachment Files Or Not!
--d, --display                  Show All Email Floders!
--l, --list                     List All Email Floders!
--f FLODER, --folder=FLODER     Please Input Email Floder Name!
++  -H HASH, --hash=HASH           Please Input Ntlmhash: xx:xx Or xxxx!
++  -p PSWD, --pswd=PSWD           Please Input Password!
++  -e EMAIL, --email=EMAIL        Please Input Email Address!
++  -c COUNT, --count=COUNT        Please Input How Many Emails You Want To Read!
++  -s SERVER, --server=SERVER     Please Input Email Server Address!
++  -k KEYWORD, --keyword=KEYWORD  Please Input Keyword To Search!
++  -L, --List                     List All Email Floders!
++  -D, --download                 Whether Download Attachment Files Or Not!
++  -d, --display                  Show All Email Floders!
++  -l, --list                     List All Email Floders!
++  -f FLODER, --folder=FLODER     Please Input Email Floder Name!
 
 ## 使用
 ### 列举邮箱目录结构
