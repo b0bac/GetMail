@@ -23,12 +23,12 @@ python3 getmail.py -u [USERNAME] -H [NTLMHASH] -e [EMAIL ADDRESS] -L
 ```
 ### 阅读邮件
 ```bash
-python3 getmail.py -u [USERNAME] -p [PASSWORD] -e [EMAIL ADDRESS] -f [文件夹，默认是Inbox] -c 阅读邮件数量（按照时间倒序，最近的在最前面）
-python3 getmail.py -u [USERNAME] -p [PASSWORD] -e [EMAIL ADDRESS] -f [文件夹，默认是Inbox] -c 阅读邮件数量（按照时间倒序，最近的在最前面） -k [Keyword]（展示包含关键字的邮件）
+python3 getmail.py -u [USERNAME] -H [NTLMHASH] -e [EMAIL ADDRESS] -f [文件夹，默认是Inbox] -c 阅读邮件数量（按照时间倒序，最近的在最前面）
+python3 getmail.py -u [USERNAME] -H [NTLMHASH] -e [EMAIL ADDRESS] -f [文件夹，默认是Inbox] -c 阅读邮件数量（按照时间倒序，最近的在最前面） -k [Keyword]（展示包含关键字的邮件）
 ```
 ### 下载附件
 ```bash
-python3 getmail.py -u [USERNAME] -p [PASSWORD] -e [EMAIL ADDRESS] -f [文件夹，默认是Inbox] -c 阅读邮件数量（按照时间倒序，最近的在最前面）——D
+python3 getmail.py -u [USERNAME] -H [NTLMHASH] -e [EMAIL ADDRESS] -f [文件夹，默认是Inbox] -c 阅读邮件数量（按照时间倒序，最近的在最前面）——D
 ```
 ## ISSUE
 + 0x01 默认Inbox收件箱邮件阅读超过20封时候有会问题【已修复】
