@@ -32,4 +32,10 @@ python3 getmail.py -u [USERNAME] -H [NTLMHASH] -e [EMAIL ADDRESS] -f [文件夹�
 ```
 ## ISSUE修复记录
 + 0x01 默认Inbox收件箱邮件阅读超过20封时候有会问题【已修复】
-+ 0x02 同名附件自动下载导致附件覆盖问题【修复中】
++ 0x02 同名附件自动下载导致附件覆盖问题【已修复】
+
+## Changelog
++ v1.1 20210421
+  + 支持展示抄送、密送
+  + 优化展示效果
+  + 修复一些bug   
