@@ -30,5 +30,6 @@ python3 getmail.py -u [USERNAME] -H [NTLMHASH] -e [EMAIL ADDRESS] -f [文件夹�
 ```bash
 python3 getmail.py -u [USERNAME] -H [NTLMHASH] -e [EMAIL ADDRESS] -f [文件夹，默认是Inbox] -c 阅读邮件数量（按照时间倒序，最近的在最前面）——D
 ```
-## ISSUE
+## ISSUE修复记录
 + 0x01 默认Inbox收件箱邮件阅读超过20封时候有会问题【已修复】
++ 0x02 同名附件自动下载导致附件覆盖问题【修复中】
