@@ -105,10 +105,10 @@ def GetEmailByPage(floder, size, page):
             break
     return pages
 
-def DownloadAttachment(attachment):
-    with open(attachment.name, "wb") as fw:
+def DownloadAttachment(attachment, filename):
+    with open(filename, "wb") as fw:
         fw.write(attachment.content)
-        print("附件: %s下载完成"%attachment.name)
+        print("附件: %s下载完成, 保存名字: %s"%(attachment.name, filename))
 
 def DisplayEmail(emails, keyword=None):
     for item in emails:
@@ -116,22 +116,35 @@ def DisplayEmail(emails, keyword=None):
             if not SearchKeyword(keyword, item):
                 continue
         print("***************************************************************")
-        print("发件人: %s"%str(item.sender.email_address))
+        #print(dir(item.id_from_xml))
+        print("邮件ID: %s"%str(item.id))
+        print("发件人: %s(%s)"%(str(item.sender.name), str(item.sender.email_address)))
+        if item.cc_recipients != None:
+            ccp = "抄送:"
+            for person in item.cc_recipients:
+                ccp += " %s(%s);"%(str(person.name), str(person.email_address))
+            print(ccp)
+        if item.bcc_recipients != None:
+            bccp = "密送:"
+            for person in item.bcc_recipients:
+                bccp += " %s(%s);"%(str(person.name), str(person.email_address))
+            print(bccp)
         print("主题: %s"%str(item.subject))
         print("时间: %s"%str(item.datetime_received))
         print("邮件内容:\n%s"%str(item.text_body))
         for attachment in item.attachments:
             if isinstance(attachment, FileAttachment):
+                filename = str(item.id) + attachment.name
                 print("附件文件: %s"%str(attachment.name))
                 if AutoDownload:
-                    DownloadAttachment(attachment)
+                    DownloadAttachment(attachment, filename)
         print("***************************************************************")
 
 
 
 if __name__ == "__main__":
     parser = OptionParser()
-    parser.add_option("-u", "--user", dest="user", help="Please Input Username!")
+    parser.add_option("-u", "--user", dest="user", help="Please Input Username: Domain\\DomainUserName!")
     parser.add_option("-H", "--hash", dest="hash", help="Please Input Ntlmhash: xx:xx Or xxxx!")
     parser.add_option("-p", "--pswd", dest="pswd", help="Please Input Password!")
     parser.add_option("-e", "--email", dest="email", help="Please Input Email Address!")
