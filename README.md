@@ -39,3 +39,8 @@ python3 getmail.py -u [USERNAME] -H [NTLMHASH] -e [EMAIL ADDRESS] -f [文件夹�
   + 支持展示抄送、密送
   + 优化展示效果
   + 修复一些bug   
++ v1.1 20210422 增加GUI版本
+  + Mac测试通过 
+![image](https://user-images.githubusercontent.com/11972644/115653616-0e7b0d80-a362-11eb-816d-04fc6068bf6f.png)
+
+```bash
