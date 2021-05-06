@@ -111,12 +111,13 @@ class MailToolGuiWindows:
         self.MailLabel.place(x=395, y=160)
         self.MailText.place(x=395, y=196)
         if platform.system() == "Darwin":
-            self.LoginButtonLabel.place(x=1058, y=45)
-            self.LogoutButtonLabel.place(x=1058, y=85)
-            self.SearchButtonLabel.place(x=1058, y=125)
-            self.FolderButtonLabel.place(x=108, y=720)
-            self.MailButtonLabel.place(x=288, y=720)
-            self.AttachmentButtonLabel.place(x=1048, y=720)
+            pass
+            #self.LoginButtonLabel.place(x=1058, y=45)
+            #self.LogoutButtonLabel.place(x=1058, y=85)
+            #self.SearchButtonLabel.place(x=1058, y=125)
+            #self.FolderButtonLabel.place(x=108, y=720)
+            #self.MailButtonLabel.place(x=288, y=720)
+            #self.AttachmentButtonLabel.place(x=1048, y=720)
         self.Windows.mainloop()
 
     def ShowMessage(self, title, message):
