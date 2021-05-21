@@ -67,7 +67,7 @@ class MailToolGuiWindows:
         self.AttachmentListLabel = tk.Label(self.Windows, text="附件列表:")
         self.AttachmentListBox = tk.Listbox(self.Windows, selectmode=tk.SINGLE, height=30)
         self.AttachmentDownloadButton = tk.Button(self.Windows, height=1, width=15, text="下载附件", command=self.DownloadAttachment)
-        self.MailList = []
+        self.MailList = {}
         self.AttachmentList = []
         self.Mail = None
         self.AuthorLabel = tk.Label(self.Windows, text="渗透的本质是信息收集，当然也是DCPWN  程序作者:挖洞的土拨鼠  问题微信联系:lab_hacker")
@@ -265,7 +265,7 @@ class MailToolGuiWindows:
             self.Page = self.PageSelect.iterator()
             for i in range(self.PageSize):
                 email = next(self.Page)
-                self.MailList.append(email)
+                self.MailList[i] = email
                 try:
                     banner = str(email.sender.name) + ":" + str(email.subject) + ":" + str(email.id)
                 except Exception as exception:
