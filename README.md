@@ -45,4 +45,4 @@ python3 getmail.py -u [USERNAME] -H [NTLMHASH] -e [EMAIL ADDRESS] -f [文件夹�
 
 + v1.1 20210521 增加GUI版本分页获取邮件功能，优化相关体验（MacOS测试通过）  
   
-![image](https://user-images.githubusercontent.com/11972644/119072699-82bad680-ba1e-11eb-9b1a-31ef78f4c300.png)
+![image](https://user-images.githubusercontent.com/11972644/119072887-de855f80-ba1e-11eb-8334-bdea960ab785.png)
