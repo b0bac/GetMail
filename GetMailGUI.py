@@ -13,7 +13,7 @@ EmailFormatString = """
 时间:%s\n
 主题:%s\n
 **********************************************************************************\n
-邮件内容:%s\n         
+邮件内容:%s\n
 """
 
 
@@ -30,6 +30,9 @@ class MailToolGuiWindows:
         self.CredentialLaber = tk.Label(self.Windows, text="登录凭据:")
         self.CredentialInput = tk.Entry(self.Windows, width=30)
         self.MailAddress = None
+        self.PageSelect = None
+        self.Page = None
+        self.PageSize = 20
         self.MailAddressLaber = tk.Label(self.Windows, text="邮件地址:")
         self.MailAddressInput = tk.Entry(self.Windows, width=30)
         self.AdvanceLaber = tk.Label(self.Windows, text="高级选项:")
@@ -53,10 +56,11 @@ class MailToolGuiWindows:
         self.Folder = tk.StringVar()
         self.FolderListBox = tk.Listbox(self.Windows, selectmode=tk.SINGLE, height=30, listvariable=self.Folder)
         self.FolderSelectButton = tk.Button(self.Windows, height=1, width=15, text="选文件夹", command=self.FolderSelected)
+        self.FolderSelectNextPageButton = tk.Button(self.Windows, height=1, width=6, text="下页", command=self.FolderSelectedNext)
         self.MailListLabel = tk.Label(self.Windows, text="邮件:")
         self.Mail = tk.StringVar()
         self.MailListBox = tk.Listbox(self.Windows,selectmode=tk.SINGLE, height=30, listvariable=self.Mail)
-        self.MailSelectButton = tk.Button(self.Windows, height=1, width=15, text="选择邮件", command=self.MailSelected)
+        self.MailSelectButton = tk.Button(self.Windows, height=1, width=6, text="选择", command=self.MailSelected)
         self.MailLabel = tk.Label(self.Windows, text="邮件内容:")
         self.MailText = tk.Text(self.Windows, height=39, relief=tk.RAISED, width=80, bg="gray")
         self.MailText.config(state="disable")
@@ -102,7 +106,8 @@ class MailToolGuiWindows:
         self.FolderSelectButton.place(x=50, y=715)
         self.MailListLabel.place(x=220, y=160)
         self.MailListBox.place(x=220, y=200)
-        self.MailSelectButton.place(x=230, y=715)
+        self.MailSelectButton.place(x=220, y=715)
+        self.FolderSelectNextPageButton.place(x=300, y=715)
         self.AuthorLabel.place(x=400 ,y=715)
         self.AttachmentListLabel.place(x=980, y=160)
         self.AttachmentListBox.place(x=980, y=200)
@@ -246,9 +251,7 @@ class MailToolGuiWindows:
     def FolderSelected(self):
         self.MailListBox.delete(0, tk.END)
         index = self.FolderListBox.curselection()[0]
-        print(index)
         folder = str(self.Folder[str(index)])
-        print(folder)
         target = self.EmailObject.root.glob(folder+"*")
         if target.folders == []:
             target = self.EmailObject.root.glob("*/" + folder)
@@ -258,8 +261,11 @@ class MailToolGuiWindows:
                     self.ShowMessage("提示", "没有找到文件夹!")
                     return
         if self.Keyword in ["", " ", None]:
-            self.MailList = target.all().order_by("-datetime_received")
-            for email in self.MailList:
+            self.PageSelect = target.all().order_by("-datetime_received")
+            self.Page = self.PageSelect.iterator()
+            for i in range(self.PageSize):
+                email = next(self.Page)
+                self.MailList.append(email)
                 try:
                     banner = str(email.sender.name) + ":" + str(email.subject) + ":" + str(email.id)
                 except Exception as exception:
@@ -271,33 +277,12 @@ class MailToolGuiWindows:
         else:
             self.MailList = {}
             index = 0
-            _list = target.all().order_by("-datetime_received")
-            sender = _list.filter(sender__contains=self.Keyword)
-            for email in sender.all().order_by("-datetime_received"):
-                try:
-                    banner = str(email.sender.name) + ":" + str(email.subject) + ":" + str(email.id)
-                except Exception as exception:
-                    continue
-                try:
-                    self.MailListBox.insert(tk.END, banner)
-                except Exception as exception:
-                    continue
-                self.MailList[index] = email
-                index += 1
-            subject = _list.filter(subject__contains=self.Keyword)
-            for email in subject.all().order_by("-datetime_received"):
-                try:
-                    banner = str(email.sender.name) + ":" + str(email.subject) + ":" + str(email.id)
-                except Exception as exception:
-                    continue
-                try:
-                    self.MailListBox.insert(tk.END, banner)
-                except Exception as exception:
-                    continue
-                self.MailList[index] = email
-                index += 1
+            _list = target.all()
             alltext = _list.filter(text_body__contains=self.Keyword)
-            for email in alltext.all().order_by("-datetime_received"):
+            self.PageSelect = alltext.all().order_by("-datetime_received")
+            self.Page = self.PageSelect.iterator()
+            for i in range(self.PageSize):
+                email = next(self.Page)
                 try:
                     banner = str(email.sender.name) + ":" + str(email.subject) + ":" + str(email.id)
                 except Exception as exception:
@@ -308,6 +293,25 @@ class MailToolGuiWindows:
                     continue
                 self.MailList[index] = email
                 index += 1
+
+    def FolderSelectedNext(self):
+        self.MailListBox.delete(0, tk.END)
+        self.MailList = {}
+        index = 0
+        if self.Page == None:
+            return
+        for i in range(self.PageSize):
+            email = next(self.Page)
+            try:
+                banner = str(email.sender.name) + ":" + str(email.subject) + ":" + str(email.id)
+            except Exception as exception:
+                continue
+            try:
+                self.MailListBox.insert(tk.END, banner)
+            except Exception as exception:
+                continue
+            self.MailList[index] = email
+            index += 1
 
     def MailSelected(self):
         self.MailText.config(state="normal")
@@ -334,7 +338,8 @@ class MailToolGuiWindows:
                 fileindex = attachment.name
                 self.AttachmentListBox.insert(tk.END, fileindex)
 
+
+
 if __name__ == '__main__':
     mailcollection = MailToolGuiWindows()
     mailcollection.Graph()
-
