@@ -43,8 +43,6 @@ python3 getmail.py -u [USERNAME] -H [NTLMHASH] -e [EMAIL ADDRESS] -f [文件夹�
   + Mac测试通过 
 ![image](https://user-images.githubusercontent.com/11972644/115653616-0e7b0d80-a362-11eb-816d-04fc6068bf6f.png)
 
-```bash
-+ v1.1 20210521 增加GUI版本分页获取邮件功能，优化相关体验（MacOS测试通过）
-  
++ v1.1 20210521 增加GUI版本分页获取邮件功能，优化相关体验（MacOS测试通过）  
   
 ![image](https://user-images.githubusercontent.com/11972644/119072699-82bad680-ba1e-11eb-9b1a-31ef78f4c300.png)
