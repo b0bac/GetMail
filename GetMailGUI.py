@@ -70,7 +70,7 @@ class MailToolGuiWindows:
         self.MailList = {}
         self.AttachmentList = []
         self.Mail = None
-        self.AuthorLabel = tk.Label(self.Windows, text="渗透的本质是信息收集，当然也是DCPWN  程序作者:挖洞的土拨鼠  问题邮件联系:crscusec@gmail.com")
+        self.AuthorLabel = tk.Label(self.Windows, text="渗透的本质是信息收集，当然也是DCPWN  程序作者:挖洞的土拨鼠  问题邮件联系:crsecscu@gmail.com")
         self.LoginButtonLabel = tk.Label(self.Windows, text="登录", font = "Helvetica -12 bold")
         self.LogoutButtonLabel = tk.Label(self.Windows, text="注销", font = "Helvetica -12 bold")
         self.SearchButtonLabel = tk.Label(self.Windows, text="搜索", font = "Helvetica -12 bold")
