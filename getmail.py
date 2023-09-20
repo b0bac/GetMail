@@ -2,7 +2,7 @@
 
 import sys
 from optparse import OptionParser
-from exchangelib import Account, Credentials, Configuration, FileAttachment
+from exchangelib import Account, Credentials, Configuration, FileAttachment, DELEGATE
 
 AutoDownload = False
 
@@ -27,8 +27,8 @@ def EmailAccountAuthByNtlmHash(username, ntlmhash, email, server=None, flag=True
             print("[+] 邮箱账号认证登录成功")
             return email
         else:
-            config = Configuration(server, credentials)
-            email = Account(primary_smtp_address=email, config=config, autodiscover=False)
+            config = Configuration(server=server, credentials=credentials)
+            email = Account(email, config=config, autodiscover=False, access_type=DELEGATE)
             return email
     except Exception as error:
         print(error)
