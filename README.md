@@ -1,3 +1,4 @@
+**新版本**：[b0bac/GetMailGUIV2](https://github.com/b0bac/GetMailGUIV2)
 # 说在最前面
 **请合法使用，在授权测试，或内部安全防守团队验证使用，不得进行任何违法行为**
 # GetMail
